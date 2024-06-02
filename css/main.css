@@ -46,13 +46,13 @@ body {
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    padding: 11px 24px;
+    padding: .75rem 2.5rem;
     border: 1px solid transparent;
-    border-radius: .25rem;
-    -webkit-border-radius: .25rem;
-    -moz-border-radius: .25rem;
-    -ms-border-radius: .25rem;
-    -o-border-radius: .25rem;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
     transition: all 0.3s;
 }
 
@@ -212,7 +212,7 @@ input[type=number] {
     /* background-color: pink; */
     font-size: 1.5rem;
     margin-bottom: -2px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .results-container {
@@ -268,3 +268,26 @@ input[type=number] {
     font-weight: 800;
     color: var(--primary-default);
 }
+
+.question-mark {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    border: 1px solid var(--primary-default);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: var(--white);
+    color: var(--primary-default);
+    font-weight: 600;
+}
+
+.question-mark:hover {
+    background-color: var(--primary-default);
+    color: var(--white);
+  }

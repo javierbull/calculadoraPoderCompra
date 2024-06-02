@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Poder de Compra</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap");
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        padding: 0 80px;
+      }
+
+      .form-container {
+        flex: 20%;
+        padding: 20px;
+        width: 20%;
+        margin: 0 auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      .results-container {
+        flex: 30%;
+        padding-left: 10%;
+      }
+
+      h1 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 600;
+        font-size: 34px;
+        line-height: 51px;
+        color: #000000;
+      }
+
+      h2 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 40px;
+        color: #000000;
+      }
+
+      .form-field {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .form-field label {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        display: inline-block; /* Ajusta el display a inline-block */
+        width: calc(
+          100% - 30px
+        ); /* Ajusta el ancho al 100% menos el ancho del signo de interrogación */
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #2f2f2f;
+        margin-right: 10px;
+        transition: color 0.3s;
+      }
+
+      .form-field label:hover {
+        color: green;
+      }
+
+      .form-field input {
+        flex-grow: 1;
+        padding: 10px;
+        height: 20px;
+        width: 110px;
+        box-sizing: border-box;
+        /* Aquí está el cambio para ocultar las flechas */
+        -moz-appearance: textfield;
+      }
+
+      .form-field input[type="range"] {
+        /* Aquí está el cambio para hacer la barra verde */
+        -webkit-appearance: none;
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background: #cccccc;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+      }
+      input[type="number"] {
+        width: 110px;
+      }
+
+      .form-field input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4caf50;
+        cursor: pointer;
+      }
+
+      .form-field input[type="range"]::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #4caf50;
+        cursor: pointer;
+      }
+
+      .form-field input::-webkit-outer-spin-button,
+      .form-field input::-webkit-inner-spin-button {
+        /* Aquí está el cambio para ocultar las flechas */
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .question-mark {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid green;
+        color: green;
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
+        margin-left: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+      }
+
+      .question-mark:hover {
+        background-color: green;
+        color: white;
+      }
+
+      .popup {
+        display: none;
+        /* Cambio aquí */
+        position: absolute;
+        width: 500px;
+        border: 1px solid green;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+        background-color: #f1f1f1;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+        z-index: 1;
+        /* Cambio aquí */
+      }
+
+      .popup h3 {
+        margin: 0;
+      }
+
+      .popup p {
+        margin: 0;
+      }
+      button {
+        background-color: green;
+        color: white;
+        border-radius: 4px;
+        border: none;
+      }
+      button:hover {
+        border: 1px solid green;
+        background-color: white;
+        color: green;
+      }
+      button:focus {
+        box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h1>Calculadora de Poder de Compra</h1>
+        <div class="form-field">
+          <label for="initialFee"
+            >Cuota inicial ahorrada (soles):
+            <span
+              class="question-mark"
+              id="questionMark"
+              onclick="togglePopup()"
+              >?</span
+            ></label
+          >
+          <input type="number" id="initialFee" name="initialFee" />
+          <div class="popup" id="popup" style="display: none">
+            <h3>Cuota inicial ahorrada</h3>
+            <p>
+              Cantidad ahorrada para el pago adelantado en la compra de una
+              vivienda, reduciendo el préstamo necesario.
+            </p>
+          </div>
+        </div>
+        <!-- Aquí está el nuevo campo -->
+        <div class="form-field">
+          <label for="netIncome"
+            >Ingresos Mensuales Netos (soles):
+            <span
+              class="question-mark"
+              id="questionMark2"
+              onclick="togglePopup2()"
+              >?</span
+            ></label
+          >
+          <input type="number" id="netIncome" name="netIncome" />
+          <div class="popup" id="popup2" style="display: none">
+            <h3>Ingresos Mensuales Netos</h3>
+            <p>
+              Los ingresos netos mensuales son la cantidad total de dinero que
+              ganas en un mes después de los impuestos y otras deducciones.
+            </p>
+          </div>
+        </div>
+        <!-- Aquí está el nuevo campo -->
+        <div class="form-field">
+          <label for="initialFeePercentage"
+            >Porcentaje de Cuota Inicial mínimo %:
+            <span
+              class="question-mark"
+              id="questionMark3"
+              onclick="togglePopup3()"
+              >?</span
+            ></label
+          >
+          <input
+            type="number"
+            id="initialFeePercentage"
+            name="initialFeePercentage"
+            value="10"
+          />
+          <div class="popup" id="popup3" style="display: none">
+            <h3>Porcentaje de Cuota Inicial mínimo %</h3>
+            <p>
+              Este es el porcentaje mínimo de la cuota inicial que debes tener
+              ahorrado para la compra de una vivienda.
+            </p>
+          </div>
+        </div>
+        <!-- Aquí está el nuevo título -->
+        <h2>Características del Crédito</h2>
+        <!-- Aquí está el nuevo campo -->
+        <div class="form-field">
+          <label for="income"
+            >Ingresos:
+            <span
+              class="question-mark"
+              id="questionMark4"
+              onclick="togglePopup4()"
+              >?</span
+            ></label
+          >
+          <span id="incomeMin"></span>
+          <input
+            type="range"
+            id="income"
+            name="income"
+            min="20"
+            max="50"
+            value="30"
+            oninput="updateIncomeValue(this.value)"
+            style="
+              background: linear-gradient(
+                to right,
+                rgb(76, 175, 80) 0%,
+                rgb(76, 175, 80) 33.3333%,
+                rgb(204, 204, 204) 33.3333%,
+                rgb(204, 204, 204) 100%
+              );
+            "
+          />
+          <span id="incomeMax"></span>
+          <span id="incomeValue"></span>
+          <div class="popup" id="popup4" style="display: none">
+            <h3>Ingresos</h3>
+            <p>Este es el rango de tus ingresos mensuales.</p>
+          </div>
+        </div>
+        <!-- Aquí están los nuevos campos -->
+        <div class="form-field">
+          <label for="loanDuration"
+            >Duración del Préstamo (años):
+            <span
+              class="question-mark"
+              id="questionMark5"
+              onclick="togglePopup5()"
+              >?</span
+            ></label
+          >
+          <input
+            type="number"
+            id="loanDuration"
+            name="loanDuration"
+            value="20"
+          />
+          <div class="popup" id="popup5" style="display: none">
+            <h3>Duración del Préstamo (años)</h3>
+            <p>
+              Este es el número de años durante los cuales tendrás que pagar el
+              préstamo.
+            </p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="interestRate"
+            >Tasa de Interés Anual (TCEA) %:
+            <span
+              class="question-mark"
+              id="questionMark6"
+              onclick="togglePopup6()"
+              >?</span
+            ></label
+          >
+          <input
+            type="number"
+            id="interestRate"
+            name="interestRate"
+            value="8.50"
+          />
+          <div class="popup" id="popup6" style="display: none">
+            <h3>Tasa de Interés Anual (TCEA) %</h3>
+            <p>
+              Esta es la tasa de interés anual que tendrás que pagar por el
+              préstamo.
+            </p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="exchangeRate"
+            >T/C (USD/PEN):
+            <span
+              class="question-mark"
+              id="questionMark7"
+              onclick="togglePopup7()"
+              >?</span
+            ></label
+          >
+          <input
+            type="number"
+            id="exchangeRate"
+            name="exchangeRate"
+            value="3.80"
+          />
+          <div class="popup" id="popup7" style="display: none">
+            <h3>T/C (USD/PEN)</h3>
+            <p>
+              Este es el tipo de cambio entre el dólar estadounidense y el sol
+              peruano.
+            </p>
+          </div>
+        </div>
+        <!-- Aquí puedes agregar más campos de formulario según sea necesario -->
+        <!--<button onclick="calculate()"> -->
+        <button
+          style="
+            background-color: green;
+            color: white;
+            font-family: 'Plus Jakarta Sans';
+            font-weight: 700;
+            font-size: 19px;
+            border-radius: 4px;
+            border: none;
+            transition: all 0.3s;
+            width: 180px;
+            height: 40px;
+          "
+          onmouseover="this.style.backgroundColor='white'; this.style.color='green'; this.style.border='1px solid green';"
+          onmouseout="this.style.backgroundColor='green'; this.style.color='white'; this.style.border='none';"
+          onclick="calculate()"
+        >
+          Calcular
+        </button>
+      </div>
+      <div class="results-container">
+        <h2>Precio Máximo de Inmueble</h2>
+
+        <!-- Precio Máximo de Inmueble en Soles -->
+        <p id="maxPropertyPriceSoles"></p>
+
+        <!-- Precio Máximo de Inmueble en USD -->
+        <p id="maxPropertyPriceUSD"></p>
+      </div>
+    </div>
+    <script>
+      function calculate() {
+        var initialFee = document.getElementById("initialFee").value;
+        var netIncome = document.getElementById("netIncome").value;
+        var initialFeePercentage = document.getElementById(
+          "initialFeePercentage"
+        ).value;
+        var income = document.getElementById("income").value;
+        var loanDuration = document.getElementById("loanDuration").value;
+        var interestRate = document.getElementById("interestRate").value;
+        var exchangeRate = document.getElementById("exchangeRate").value;
+
+        // Convertir el ingreso a un porcentaje
+        var incomePercentage = income / 100;
+
+        var maxMonthlyFee = netIncome * incomePercentage;
+
+        console.log(
+          "Máxima Cuota mensual aprobable por el Banco: " + maxMonthlyFee
+        );
+
+        // Mostrar el valor inicial
+        var initialFee = document.getElementById("initialFee").value;
+        console.log("Cuota inicial: " + initialFee);
+
+        // Calcular la duración del préstamo en meses
+        var loanDuration = document.getElementById("loanDuration").value;
+        var loanDurationMonths = loanDuration * 12;
+        console.log("Duración del préstamo (meses): " + loanDurationMonths);
+
+        var annualInterestRate = document.getElementById("interestRate").value;
+        var monthlyInterestRate = annualInterestRate / 100 / 12;
+
+        console.log("Tasa de Interés Mensual: " + monthlyInterestRate);
+
+        // Calcular el Máximo Préstamo aprobable por el Banco
+
+        var maxLoan =
+          (maxMonthlyFee *
+            (1 - Math.pow(1 / (1 + monthlyInterestRate), loanDurationMonths))) /
+          monthlyInterestRate;
+        maxLoan = Math.floor(maxLoan);
+
+        console.log("Máximo Préstamo aprobable por el Banco: " + maxLoan);
+        // Calcular el Precio Máximo de Inmueble en Soles
+        var initialFeePercentage =
+          document.getElementById("initialFeePercentage").value / 100;
+        var maxPropertyPrice;
+        if (
+          (parseInt(initialFee) + parseInt(maxLoan)) * initialFeePercentage <=
+          initialFee
+        ) {
+          maxPropertyPrice = parseInt(maxLoan) + parseInt(initialFee);
+        } else {
+          maxPropertyPrice = initialFee / initialFeePercentage;
+        }
+        const formatter = new Intl.NumberFormat("es-PE", {
+          style: "currency",
+          currency: "PEN",
+        });
+        const soles = maxPropertyPrice;
+
+        //document.getElementById('maxPropertyPriceSoles').innerHTML = "Precio Máximo de Inmueble en Soles: " + maxPropertyPrice;
+        document.getElementById("maxPropertyPriceSoles").innerHTML =
+          "Precio Máximo de Inmueble en Soles: " + formatter.format(soles);
+        console.log("Precio Máximo de Inmueble en Soles: " + maxPropertyPrice);
+
+        //Muestra el precio en dolares
+        var exchangeRate = document.getElementById("exchangeRate").value;
+        var maxPropertyPriceUSD = maxPropertyPrice / exchangeRate;
+        maxPropertyPriceUSD = Math.round(maxPropertyPriceUSD);
+
+        const usDollar = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+        });
+        const price = maxPropertyPriceUSD;
+        document.getElementById("maxPropertyPriceUSD").innerHTML =
+          "Precio Máximo de Inmueble en USD: " + usDollar.format(price);
+      }
+
+      function togglePopup() {
+        var popup = document.getElementById("popup");
+        var questionMark = document.getElementById("questionMark");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup2() {
+        var popup = document.getElementById("popup2");
+        var questionMark = document.getElementById("questionMark2");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup3() {
+        var popup = document.getElementById("popup3");
+        var questionMark = document.getElementById("questionMark3");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup4() {
+        var popup = document.getElementById("popup4");
+        var questionMark = document.getElementById("questionMark4");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup5() {
+        var popup = document.getElementById("popup5");
+        var questionMark = document.getElementById("questionMark5");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup6() {
+        var popup = document.getElementById("popup6");
+        var questionMark = document.getElementById("questionMark6");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      function togglePopup7() {
+        var popup = document.getElementById("popup7");
+        var questionMark = document.getElementById("questionMark7");
+        if (popup.style.display === "none") {
+          popup.style.display = "block";
+          questionMark.textContent = "X";
+          questionMark.style.color = "white";
+          questionMark.style.backgroundColor = "green";
+        } else {
+          popup.style.display = "none";
+          questionMark.textContent = "?";
+          questionMark.style.color = "green";
+          questionMark.style.backgroundColor = "transparent";
+        }
+      }
+
+      //  function updateIncomeValue(val) {
+      //    var income = document.getElementById('income');
+      //  var incomeValue = document.getElementById('incomeValue');
+      //document.getElementById('incomeValue').innerHTML = val;
+      // document.getElementById('incomeMin').innerHTML = document.getElementById('income').min;
+      //   document.getElementById('incomeMax').innerHTML = document.getElementById('income').max;
+      // }
+      function updateIncomeValue(val) {
+        var income = document.getElementById("income");
+        var incomeValue = document.getElementById("incomeValue");
+
+        incomeValue.innerHTML = val;
+
+        // Calcular el porcentaje del valor actual en relación con el rango
+        var percentage = ((val - income.min) / (income.max - income.min)) * 100;
+
+        // Actualizar el color de la barra de rango
+        income.style.background =
+          "linear-gradient(to right, #4CAF50 0%, #4CAF50 " +
+          percentage +
+          "%, #CCCCCC " +
+          percentage +
+          "%, #CCCCCC 100%)";
+      }
+      // Llamar a la función con el valor inicial de la barra de rango
+      updateIncomeValue(document.getElementById("income").value);
+    </script>
+  </body>
+</html>

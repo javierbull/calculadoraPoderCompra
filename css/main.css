@@ -27,6 +27,16 @@ html {
     color: var(--gray-4);
   }
 
+  .container {
+    background-color: tomato;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    gap: 2rem;
+  }
+
   .btn {
     display: inline-block;
     font-weight: 500;
@@ -42,7 +52,7 @@ html {
     -moz-border-radius: .25rem;
     -ms-border-radius: .25rem;
     -o-border-radius: .25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: all 0.3s;
   }
 
   .btn-primary {
@@ -56,3 +66,22 @@ html {
     background-color: var(--primary-light);
     border-color: var(--primary-light);
   }
+
+  .form-container {
+    background-color: lavender;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+  }
+
+  .results-container {
+    background-color: lightyellow;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+  }
+
+ 
+

@@ -1,0 +1,58 @@
+:root {
+    --primary-default: #36AA71;
+    --primary-light: #4FD178;
+    --primary-bg: #D6F4D6;
+    --white: #ffffff;
+    --black: #000000;
+    --gray-1: #D9DADB;
+    --gray-2: #878C8F;
+    --gray-3: #636363;
+    --gray-4: #222222;  
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 400;
+    color: var(--gray-4);
+  }
+
+  .btn {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 11px 24px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    -ms-border-radius: .25rem;
+    -o-border-radius: .25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .btn-primary {
+    color: var(--white);
+    background-color: var(--primary-default);
+    border-color: var(--primary-default);
+  }
+
+  .btn-primary:hover {
+    color: var(--white);
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+  }

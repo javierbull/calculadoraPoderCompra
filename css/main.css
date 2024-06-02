@@ -81,7 +81,7 @@ body {
     -o-border-radius: 1.5rem;
     -webkit-box-shadow: 0px 6px 11px 3px rgba(0, 0, 0, 0.10);
     -moz-box-shadow: 0px 6px 11px 3px rgba(0, 0, 0, 0.10);
-    box-shadow: 0px 6px 11px 3px rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.10);
 }
 
 .form-container h1 {
@@ -90,14 +90,6 @@ body {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--primary-default);
-}
-
-.results-container {
-    background-color: lightyellow;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.5rem;
 }
 
 .form-field {
@@ -215,4 +207,58 @@ input[type=number] {
     font-size: 1.5rem;
     margin-bottom: -2px;
     font-weight: 600;
+}
+
+.results-container {
+    background-color: var(--primary-default);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    -ms-border-radius: 1.5rem;
+    -o-border-radius: 1.5rem;
+    box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.10);
+
+}
+
+.results-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.container-cards-results {
+    /* background-color: pink; */
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.card-precio-inmueble {
+    padding: 1.5rem;
+    background-color: var(--white);
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem 0 1rem 0 ;
+    -webkit-border-radius: 1rem 0 1rem 0 ;
+    -moz-border-radius: 1rem 0 1rem 0 ;
+    -ms-border-radius: 1rem 0 1rem 0 ;
+    -o-border-radius: 1rem 0 1rem 0 ;
+}
+
+.card-precio-inmueble h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+
+.card-precio-inmueble p {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-default);
 }

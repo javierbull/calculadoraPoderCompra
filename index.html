@@ -133,11 +133,24 @@
     <div class="results-container">
       <h2>Precio Máximo de Inmueble</h2>
 
+      <div class="container-cards-results">
+        <div class="card-precio-inmueble">
+          <h3>Precio Máximo de Inmueble en soles:</h3>
+          <p id="maxPropertyPriceSoles"></p>
+        </div>
+
+        <div class="card-precio-inmueble">
+          <h3>Precio Máximo de Inmueble en soles:</h3>
+          <p id="maxPropertyPriceUSD"></p>
+        </div>
+
+      </div>
+
       <!-- Precio Máximo de Inmueble en Soles -->
-      <p id="maxPropertyPriceSoles"></p>
+      <!-- <p id="maxPropertyPriceSoles"></p> -->
 
       <!-- Precio Máximo de Inmueble en USD -->
-      <p id="maxPropertyPriceUSD"></p>
+      <!-- <p id="maxPropertyPriceUSD"></p> -->
     </div>
   </div>
   <script>
@@ -204,7 +217,7 @@
 
       //document.getElementById('maxPropertyPriceSoles').innerHTML = "Precio Máximo de Inmueble en Soles: " + maxPropertyPrice;
       document.getElementById("maxPropertyPriceSoles").innerHTML =
-        "Precio Máximo de Inmueble en Soles: " + formatter.format(soles);
+        formatter.format(soles);
       console.log("Precio Máximo de Inmueble en Soles: " + maxPropertyPrice);
 
       //Muestra el precio en dolares
@@ -219,7 +232,7 @@
       });
       const price = maxPropertyPriceUSD;
       document.getElementById("maxPropertyPriceUSD").innerHTML =
-        "Precio Máximo de Inmueble en USD: " + usDollar.format(price);
+      usDollar.format(price);
     }
 
     function togglePopup() {

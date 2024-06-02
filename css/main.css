@@ -60,12 +60,18 @@ body {
     color: var(--white);
     background-color: var(--primary-default);
     border-color: var(--primary-default);
+    font-size: 1.5rem;
 }
 
 .btn-primary:hover {
     color: var(--white);
     background-color: var(--primary-light);
     border-color: var(--primary-light);
+}
+
+.container-btn-form {
+    display: flex;
+    justify-content: center;
 }
 
 .form-container {
@@ -88,7 +94,7 @@ body {
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-default);
 }
 
@@ -135,7 +141,7 @@ input[type=number] {
 .form-row {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .form-container h2 {
@@ -143,7 +149,7 @@ input[type=number] {
     color: var(--primary-default);
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
 }
 
 .form-field input[type="range"] {

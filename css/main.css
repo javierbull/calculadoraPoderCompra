@@ -4,10 +4,11 @@
     --primary-bg: #D6F4D6;
     --white: #ffffff;
     --black: #000000;
-    --gray-1: #D9DADB;
-    --gray-2: #878C8F;
-    --gray-3: #636363;
-    --gray-4: #222222;  
+    --gray-1: #F3F6F8;
+    --gray-2: #D9DADB;
+    --gray-3: #878C8F;
+    --gray-4: #636363;
+    --gray-5: #222222;  
 }
 
 html {
@@ -28,7 +29,7 @@ html {
   }
 
   .container {
-    background-color: tomato;
+    background-color: var(--gray-1);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -68,11 +69,26 @@ html {
   }
 
   .form-container {
-    background-color: lavender;
-    width: 50%;
+    background-color: var(--white);
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     padding: 1.5rem;
+    border-radius: 1.5rem;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    -ms-border-radius: 1.5rem;
+    -o-border-radius: 1.5rem;
+    -webkit-box-shadow: 0px 6px 11px 3px rgba(0,0,0,0.10);
+-moz-box-shadow: 0px 6px 11px 3px rgba(0,0,0,0.10);
+box-shadow: 0px 6px 11px 3px rgba(0,0,0,0.10);
+}
+
+  .form-container h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
   .results-container {
@@ -83,5 +99,44 @@ html {
     padding: 1.5rem;
   }
 
- 
+  .form-field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    width: 100%;
+  }
 
+  .form-field input {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border: 1px solid var(--gray-2);
+    border-radius: .25rem;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    -ms-border-radius: .25rem;
+    -o-border-radius: .25rem;
+    padding: 11px 24px;
+    width: 100%;
+    color: var(--gray-5);
+}
+
+.form-field input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--primary-default);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(214, 244, 214, 1);
+  }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}

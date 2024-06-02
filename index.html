@@ -15,70 +15,73 @@
     <div class="container">
       <div class="form-container">
         <h1>Calculadora de Poder de Compra</h1>
-        <div class="form-field">
-          <label for="initialFee"
-            >Cuota inicial ahorrada (soles):
-            <span
-              class="question-mark"
-              id="questionMark"
-              onclick="togglePopup()"
-              >?</span
-            ></label
-          >
-          <input type="number" id="initialFee" name="initialFee" />
-          <div class="popup" id="popup" style="display: none">
-            <h3>Cuota inicial ahorrada</h3>
-            <p>
-              Cantidad ahorrada para el pago adelantado en la compra de una
-              vivienda, reduciendo el préstamo necesario.
-            </p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="initialFee"
+              >Cuota inicial ahorrada (soles):
+              <span
+                class="question-mark"
+                id="questionMark"
+                onclick="togglePopup()"
+                >?</span
+              ></label>
+            <input type="number" id="initialFee" name="initialFee" />
+            <div class="popup" id="popup" style="display: none">
+              <h3>Cuota inicial ahorrada</h3>
+              <p>
+                Cantidad ahorrada para el pago adelantado en la compra de una
+                vivienda, reduciendo el préstamo necesario.
+              </p>
+            </div>
+          </div>
+          <!-- Aquí está el nuevo campo -->
+          <div class="form-field">
+            <label for="netIncome"
+              >Ingresos Mensuales Netos (soles):
+              <span
+                class="question-mark"
+                id="questionMark2"
+                onclick="togglePopup2()"
+                >?</span
+              ></label
+            >
+            <input type="number" id="netIncome" name="netIncome" />
+            <div class="popup" id="popup2" style="display: none">
+              <h3>Ingresos Mensuales Netos</h3>
+              <p>
+                Los ingresos netos mensuales son la cantidad total de dinero que
+                ganas en un mes después de los impuestos y otras deducciones.
+              </p>
+            </div>
+          </div>
+          <!-- Aquí está el nuevo campo -->
+          <div class="form-field">
+            <label for="initialFeePercentage"
+              >Porcentaje de Cuota Inicial mínimo %:
+              <span
+                class="question-mark"
+                id="questionMark3"
+                onclick="togglePopup3()"
+                >?</span
+              ></label
+            >
+            <input
+              type="number"
+              id="initialFeePercentage"
+              name="initialFeePercentage"
+              value="10"
+            />
+            <div class="popup" id="popup3" style="display: none">
+              <h3>Porcentaje de Cuota Inicial mínimo %</h3>
+              <p>
+                Este es el porcentaje mínimo de la cuota inicial que debes tener
+                ahorrado para la compra de una vivienda.
+              </p>
+            </div>
           </div>
         </div>
-        <!-- Aquí está el nuevo campo -->
-        <div class="form-field">
-          <label for="netIncome"
-            >Ingresos Mensuales Netos (soles):
-            <span
-              class="question-mark"
-              id="questionMark2"
-              onclick="togglePopup2()"
-              >?</span
-            ></label
-          >
-          <input type="number" id="netIncome" name="netIncome" />
-          <div class="popup" id="popup2" style="display: none">
-            <h3>Ingresos Mensuales Netos</h3>
-            <p>
-              Los ingresos netos mensuales son la cantidad total de dinero que
-              ganas en un mes después de los impuestos y otras deducciones.
-            </p>
-          </div>
-        </div>
-        <!-- Aquí está el nuevo campo -->
-        <div class="form-field">
-          <label for="initialFeePercentage"
-            >Porcentaje de Cuota Inicial mínimo %:
-            <span
-              class="question-mark"
-              id="questionMark3"
-              onclick="togglePopup3()"
-              >?</span
-            ></label
-          >
-          <input
-            type="number"
-            id="initialFeePercentage"
-            name="initialFeePercentage"
-            value="10"
-          />
-          <div class="popup" id="popup3" style="display: none">
-            <h3>Porcentaje de Cuota Inicial mínimo %</h3>
-            <p>
-              Este es el porcentaje mínimo de la cuota inicial que debes tener
-              ahorrado para la compra de una vivienda.
-            </p>
-          </div>
-        </div>
+
         <!-- Aquí está el nuevo título -->
         <h2>Características del Crédito</h2>
         <!-- Aquí está el nuevo campo -->
@@ -196,7 +199,7 @@
           CALCULAR
         </button>
       </div>
-      
+
       <div class="results-container">
         <h2>Precio Máximo de Inmueble</h2>
 

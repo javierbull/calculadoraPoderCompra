@@ -1,0 +1,36 @@
+/* Laptop */
+@media (max-width: 1366px) {
+    .form-container {
+        width: 90%;
+    }
+}
+
+/* Fin laptop */
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+
+}
+
+/* Fin tablet landscape */
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  
+}
+/* fin tablet portrait */
+
+/* Cell landscape */
+@media (max-width: 736px) {
+
+}
+
+/* Fin cell landscape */
+
+/* Cell portrait */
+@media (max-width: 480px) {
+
+}
+
+/* Fin cell portrait */
+

@@ -11,7 +11,7 @@
 @media (max-width: 1024px) {
 
     .container {
-        padding: 24px;
+        padding: 1.5rem;
     }
 
     .form-field label {
@@ -37,6 +37,23 @@
         align-items: end;
         gap: 1rem;
     }
+
+    .card-precio-inmueble {
+        padding: 1rem;
+        background-color: var(--white);
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, .25);
+        border-radius: 1rem 0 1rem 0;
+        -webkit-border-radius: 1rem 0 1rem 0;
+        -moz-border-radius: 1rem 0 1rem 0;
+        -ms-border-radius: 1rem 0 1rem 0;
+        -o-border-radius: 1rem 0 1rem 0;
+        width: 100%;
+    }
+
+    .card-precio-inmueble h3 {
+        font-size: 1rem;
+    }
 }
 /* fin tablet portrait */
 
@@ -49,7 +66,29 @@
 
 /* Cell portrait */
 @media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
 
+    .form-field label {
+        font-size: .875rem;
+    }
+
+    .form-container h1, .form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        font-size: 1.25rem;
+    }
+
+    .container-cards-results {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+    }
 }
 
 /* Fin cell portrait */

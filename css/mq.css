@@ -1,7 +1,11 @@
 /* Laptop */
 @media (max-width: 1366px) {
     .form-container, .results-container {
-        width: 90%;
+        width: 100%;
+    }
+
+    .form-field label {
+        font-size: .875rem;
     }
 }
 
@@ -12,10 +16,6 @@
 
     .container {
         padding: 1.5rem;
-    }
-
-    .form-field label {
-        font-size: .875rem;
     }
 
     .form-container, .results-container {
@@ -88,6 +88,10 @@
         flex-direction: column;
         gap: 1rem;
         justify-content: center;
+    }
+
+    .results-container h2 {
+        font-size: 1.5rem;
     }
 }
 

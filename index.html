@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calculadora de Poder de Compra</title>
-  <!-- <link rel="stylesheet" href="css/main.css"> -->
-  <link rel="stylesheet" href="css/prueba.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- <link rel="stylesheet" href="css/prueba.css"> -->
   <link rel="stylesheet" href="css/mq.css">
 </head>
 
@@ -131,11 +131,18 @@
     <div class="results-container">
       <h2>Precio Máximo de Inmueble</h2>
 
-      <!-- Precio Máximo de Inmueble en Soles -->
-      <p id="maxPropertyPriceSoles"></p>
+      <div class="container-cards-results">
+        <div class="card-precio-inmueble">
+          <h3>Precio Máximo de Inmueble en soles:</h3>
+          <p id="maxPropertyPriceSoles"></p>
+        </div>
 
-      <!-- Precio Máximo de Inmueble en USD -->
-      <p id="maxPropertyPriceUSD"></p>
+        <div class="card-precio-inmueble">
+          <h3>Precio Máximo de Inmueble en dolares:</h3>
+          <p id="maxPropertyPriceUSD"></p>
+        </div>
+
+      </div>
     </div>
   </div>
   <script>
@@ -202,7 +209,7 @@
 
       //document.getElementById('maxPropertyPriceSoles').innerHTML = "Precio Máximo de Inmueble en Soles: " + maxPropertyPrice;
       document.getElementById("maxPropertyPriceSoles").innerHTML =
-        "Precio Máximo de Inmueble en Soles: " + formatter.format(soles);
+        formatter.format(soles);
       console.log("Precio Máximo de Inmueble en Soles: " + maxPropertyPrice);
 
       //Muestra el precio en dolares
@@ -217,7 +224,7 @@
       });
       const price = maxPropertyPriceUSD;
       document.getElementById("maxPropertyPriceUSD").innerHTML =
-        "Precio Máximo de Inmueble en USD: " + usDollar.format(price);
+        usDollar.format(price);
     }
 
     function togglePopup() {

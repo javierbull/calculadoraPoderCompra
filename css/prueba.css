@@ -284,7 +284,7 @@ input[type=number] {
     color: var(--primary-default);
 }
 
-/* .question-mark {
+.question-mark {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -300,23 +300,7 @@ input[type=number] {
     background-color: var(--white);
     color: var(--primary-default);
     font-weight: 600;
-} */
-
-.question-mark {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid green;
-    color: green;
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
-    line-height: 20px;
-    margin-left: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
-  }
+}
 
 .question-mark:hover {
     background-color: var(--primary-default);
@@ -326,15 +310,21 @@ input[type=number] {
   .popup {
     display: none;
     position: absolute;
-    width: 500px;
-    border: 1px solid green;
-    border-radius: 3px;
-    padding: 10px;
+    width: 25rem;
+    border: 1px solid var(--gray-5);
+    padding: .75rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    background-color: #f1f1f1;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10px;
+    background-color: var(--gray-5);
+    color: var(--white);
+    margin-top: 1.4rem;
     z-index: 1;
-  }
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+.popup h3 {
+    margin-bottom: .5rem;
+}
